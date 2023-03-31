@@ -119,7 +119,7 @@
 <p>PS：看到这一大片是不是头晕了，不晓得是些啥，一般只需要改一下  &#x3D;&#x3D;”program”&#x3D;&#x3D;和&#x3D;&#x3D;”args”&#x3D;&#x3D;就好啦~<br>用法：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若参数有多个，则：</span><br><span class="line">&quot;args&quot;: [&quot;--run_mode&quot;, &quot;classification&quot;]</span><br><span class="line">一个参数对应一个双引号，每个参数间使用逗号（英文）隔开</span><br></pre></td></tr></table></figure>
 
-<h3 id="当VSCode终端显示间隔很大"><a href="#当VSCode终端显示间隔很大" class="headerlink" title="当VSCode终端显示间隔很大"></a>当VSCode终端显示间隔很大</h3><p>打开Ubuntu 18.04，运行代码，突然发现终端显示贼丑，一种没有对齐的感觉，如图<br><img src="/./ubuntu_1.png" alt="VSCode终端显示很乱"><br>通过 VSCode &#x3D;&#x3D;文件&#x3D;&#x3D; - &#x3D;&#x3D;首选项&#x3D;&#x3D; - &#x3D;&#x3D;设置&#x3D;&#x3D;<br>搜索fontFamily<br><img src="/./ubuntu_2.png" alt="设置fontFamily"><br>下滑找到Terminal › Integrated: Font Family，会发现是空的，加上Ubuntu自带的等线字体monospace，结果会整齐很多</p>
+<h3 id="当VSCode终端显示间隔很大"><a href="#当VSCode终端显示间隔很大" class="headerlink" title="当VSCode终端显示间隔很大"></a>当VSCode终端显示间隔很大</h3><p>打开Ubuntu 18.04，运行代码，突然发现终端显示贼丑，一种没有对齐的感觉，如图<br><img src="/./ubuntu-1/ubuntu_1.png" alt="VSCode终端显示很乱"><br>通过 VSCode &#x3D;&#x3D;文件&#x3D;&#x3D; - &#x3D;&#x3D;首选项&#x3D;&#x3D; - &#x3D;&#x3D;设置&#x3D;&#x3D;<br>搜索fontFamily<br><img src="/./ubuntu-1/ubuntu_2.png" alt="设置fontFamily"><br>下滑找到Terminal › Integrated: Font Family，会发现是空的，加上Ubuntu自带的等线字体monospace，结果会整齐很多</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">monospace</span><br></pre></td></tr></table></figure>
 
 <p>虽然这个字体有点丑，网上使用其他各式各样好看的字体的方法也有很多，如果看不惯的话，可以去搜一搜哦~</p>
