@@ -1,88 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Ubuntu上配置C/C++环境</title>
-    <url>/2023/03/31/Ubuntu%E4%B8%8A%E9%85%8D%E7%BD%AEC-C-%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>VSCode+Ubuntu</p>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
-<li>gcc<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install gcc</span><br></pre></td></tr></table></figure></li>
-<li>g++<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install g++</span><br></pre></td></tr></table></figure></li>
-<li>cmake<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install cmake</span><br></pre></td></tr></table></figure>
-CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。（来源于<a href="https://baike.baidu.com/item/cmake/7138032?fr=aladdin">cmake</a>）</li>
-</ul>
-<h3 id="VSCode中需要的插件"><a href="#VSCode中需要的插件" class="headerlink" title="VSCode中需要的插件"></a>VSCode中需要的插件</h3><ul>
-<li>C&#x2F;C++</li>
-<li>CMake</li>
-</ul>
-<p>PS:一般会有提示的，下载之后需要重启VSCode</p>
-<p>这样，就配置好C++环境啦~</p>
-<h3 id="了解一下launch-json文件"><a href="#了解一下launch-json文件" class="headerlink" title="了解一下launch.json文件"></a>了解一下launch.json文件</h3><p>这个launch.json启动文件用于在VSCode中配置调试器，运行C++工程的时候，进行调试需要。</p>
-<p>Visual Studio Code生成launch.json启动几乎所有需要的信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) 启动&quot;,//名称</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/main&quot;,//Program字段设置为要启动的应用程序dll或.NET核心主机可执行文件的路径</span><br><span class="line">            &quot;args&quot;: [],//参数</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: false,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;为 gdb 启用整齐打印&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ] </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>PS：看到这一大片是不是头晕了，不晓得是些啥，一般只需要改一下  &#x3D;&#x3D;”program”&#x3D;&#x3D;和&#x3D;&#x3D;”args”&#x3D;&#x3D;就好啦~<br>用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若参数有多个，则：</span><br><span class="line">&quot;args&quot;: [&quot;--run_mode&quot;, &quot;classification&quot;]</span><br><span class="line">一个参数对应一个双引号，每个参数间使用逗号（英文）隔开</span><br></pre></td></tr></table></figure>
-
-<h3 id="当VSCode终端显示间隔很大"><a href="#当VSCode终端显示间隔很大" class="headerlink" title="当VSCode终端显示间隔很大"></a>当VSCode终端显示间隔很大</h3><p>打开Ubuntu 18.04，运行代码，突然发现终端显示贼丑，一种没有对齐的感觉，如图<br><img src="/./Ubuntu%E4%B8%8A%E9%85%8D%E7%BD%AEC-C-%E7%8E%AF%E5%A2%83/ubuntu_1.png" alt="VSCode终端显示很乱"><br>通过 VSCode &#x3D;&#x3D;文件&#x3D;&#x3D; - &#x3D;&#x3D;首选项&#x3D;&#x3D; - &#x3D;&#x3D;设置&#x3D;&#x3D;<br>搜索fontFamily<br><img src="/./Ubuntu%E4%B8%8A%E9%85%8D%E7%BD%AEC-C-%E7%8E%AF%E5%A2%83/ubuntu_2.png" alt="设置fontFamily"><br>下滑找到Terminal › Integrated: Font Family，会发现是空的，加上Ubuntu自带的等线字体monospace，结果会整齐很多</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">monospace</span><br></pre></td></tr></table></figure>
-<p>虽然这个字体有点丑，网上使用其他各式各样好看的字体的方法也有很多，如果看不惯的话，可以去搜一搜哦~</p>
-<p>应该大概也许 这篇博客就结束啦，下一篇写啥暂时还没想好，或许是使用过程中遇到的bug吧~</p>
-]]></content>
-      <categories>
-        <category>Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-        <tag>C/C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu上配置C/C++环境</title>
-    <url>/2023/03/31/ubuntu-1/</url>
-    <content><![CDATA[<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>VSCode+Ubuntu</p>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
-<li>gcc</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install gcc</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>g++</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install g++</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>cmake</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install cmake</span><br></pre></td></tr></table></figure>
-
-<p>CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。（来源于<a href="https://baike.baidu.com/item/cmake/7138032?fr=aladdin">cmake</a>）</p>
-<h3 id="VSCode中需要的插件"><a href="#VSCode中需要的插件" class="headerlink" title="VSCode中需要的插件"></a>VSCode中需要的插件</h3><ul>
-<li>C&#x2F;C++</li>
-<li>CMake</li>
-</ul>
-<p>PS:一般会有提示的，下载之后需要重启VSCode</p>
-<p>这样，就配置好C++环境啦~</p>
-<h3 id="了解一下launch-json文件"><a href="#了解一下launch-json文件" class="headerlink" title="了解一下launch.json文件"></a>了解一下launch.json文件</h3><p>这个launch.json启动文件用于在VSCode中配置调试器，运行C++工程的时候，进行调试需要。</p>
-<p>Visual Studio Code生成launch.json启动几乎所有需要的信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) 启动&quot;,//名称</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/main&quot;,//Program字段设置为要启动的应用程序dll或.NET核心主机可执行文件的路径</span><br><span class="line">            &quot;args&quot;: [],//参数</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: false,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;为 gdb 启用整齐打印&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ] </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>PS：看到这一大片是不是头晕了，不晓得是些啥，一般只需要改一下  &#x3D;&#x3D;”program”&#x3D;&#x3D;和&#x3D;&#x3D;”args”&#x3D;&#x3D;就好啦~<br>用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若参数有多个，则：</span><br><span class="line">&quot;args&quot;: [&quot;--run_mode&quot;, &quot;classification&quot;]</span><br><span class="line">一个参数对应一个双引号，每个参数间使用逗号（英文）隔开</span><br></pre></td></tr></table></figure>
-
-<h3 id="当VSCode终端显示间隔很大"><a href="#当VSCode终端显示间隔很大" class="headerlink" title="当VSCode终端显示间隔很大"></a>当VSCode终端显示间隔很大</h3><p>打开Ubuntu 18.04，运行代码，突然发现终端显示贼丑，一种没有对齐的感觉，如图<br><img src="/./ubuntu-1/ubuntu_1.png" alt="VSCode终端显示很乱"><br>通过 VSCode &#x3D;&#x3D;文件&#x3D;&#x3D; - &#x3D;&#x3D;首选项&#x3D;&#x3D; - &#x3D;&#x3D;设置&#x3D;&#x3D;<br>搜索fontFamily<br><img src="/./ubuntu-1/ubuntu_2.png" alt="设置fontFamily"><br>下滑找到Terminal › Integrated: Font Family，会发现是空的，加上Ubuntu自带的等线字体monospace，结果会整齐很多</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">monospace</span><br></pre></td></tr></table></figure>
-
-<p>虽然这个字体有点丑，网上使用其他各式各样好看的字体的方法也有很多，如果看不惯的话，可以去搜一搜哦~</p>
-<p>应该大概也许 这篇博客就结束啦，下一篇写啥暂时还没想好，或许是使用过程中遇到的bug吧~</p>
-]]></content>
-      <categories>
-        <category>Ubuntu</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-        <tag>C/C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos7安装与卸载virtualBox</title>
     <url>/2023/03/31/centos7%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BDvirtualBox/</url>
     <content><![CDATA[<blockquote>
@@ -166,6 +84,88 @@ CMake是一个跨平台的安装（编译）工具，可以用简单的语句来
       <tags>
         <tag>CentOS7</tag>
         <tag>VirtualBox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu上配置C/C++环境</title>
+    <url>/2023/03/31/ubuntu-1/</url>
+    <content><![CDATA[<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>VSCode+Ubuntu</p>
+<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
+<li>gcc</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install gcc</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>g++</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install g++</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cmake</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install cmake</span><br></pre></td></tr></table></figure>
+
+<p>CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。（来源于<a href="https://baike.baidu.com/item/cmake/7138032?fr=aladdin">cmake</a>）</p>
+<h3 id="VSCode中需要的插件"><a href="#VSCode中需要的插件" class="headerlink" title="VSCode中需要的插件"></a>VSCode中需要的插件</h3><ul>
+<li>C&#x2F;C++</li>
+<li>CMake</li>
+</ul>
+<p>PS:一般会有提示的，下载之后需要重启VSCode</p>
+<p>这样，就配置好C++环境啦~</p>
+<h3 id="了解一下launch-json文件"><a href="#了解一下launch-json文件" class="headerlink" title="了解一下launch.json文件"></a>了解一下launch.json文件</h3><p>这个launch.json启动文件用于在VSCode中配置调试器，运行C++工程的时候，进行调试需要。</p>
+<p>Visual Studio Code生成launch.json启动几乎所有需要的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) 启动&quot;,//名称</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/main&quot;,//Program字段设置为要启动的应用程序dll或.NET核心主机可执行文件的路径</span><br><span class="line">            &quot;args&quot;: [],//参数</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: false,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;为 gdb 启用整齐打印&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ] </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PS：看到这一大片是不是头晕了，不晓得是些啥，一般只需要改一下  &#x3D;&#x3D;”program”&#x3D;&#x3D;和&#x3D;&#x3D;”args”&#x3D;&#x3D;就好啦~<br>用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若参数有多个，则：</span><br><span class="line">&quot;args&quot;: [&quot;--run_mode&quot;, &quot;classification&quot;]</span><br><span class="line">一个参数对应一个双引号，每个参数间使用逗号（英文）隔开</span><br></pre></td></tr></table></figure>
+
+<h3 id="当VSCode终端显示间隔很大"><a href="#当VSCode终端显示间隔很大" class="headerlink" title="当VSCode终端显示间隔很大"></a>当VSCode终端显示间隔很大</h3><p>打开Ubuntu 18.04，运行代码，突然发现终端显示贼丑，一种没有对齐的感觉，如图<br><img src="/./ubuntu-1/ubuntu_1.png" alt="VSCode终端显示很乱"><br>通过 VSCode &#x3D;&#x3D;文件&#x3D;&#x3D; - &#x3D;&#x3D;首选项&#x3D;&#x3D; - &#x3D;&#x3D;设置&#x3D;&#x3D;<br>搜索fontFamily<br><img src="/./ubuntu-1/ubuntu_2.png" alt="设置fontFamily"><br>下滑找到Terminal › Integrated: Font Family，会发现是空的，加上Ubuntu自带的等线字体monospace，结果会整齐很多</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">monospace</span><br></pre></td></tr></table></figure>
+
+<p>虽然这个字体有点丑，网上使用其他各式各样好看的字体的方法也有很多，如果看不惯的话，可以去搜一搜哦~</p>
+<p>应该大概也许 这篇博客就结束啦，下一篇写啥暂时还没想好，或许是使用过程中遇到的bug吧~</p>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu上配置C/C++环境</title>
+    <url>/2023/03/31/Ubuntu%E4%B8%8A%E9%85%8D%E7%BD%AEC-C-%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>VSCode+Ubuntu</p>
+<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
+<li>gcc<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install gcc</span><br></pre></td></tr></table></figure></li>
+<li>g++<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install g++</span><br></pre></td></tr></table></figure></li>
+<li>cmake<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在终端输入</span><br><span class="line">sudo apt-get install cmake</span><br></pre></td></tr></table></figure>
+CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。（来源于<a href="https://baike.baidu.com/item/cmake/7138032?fr=aladdin">cmake</a>）</li>
+</ul>
+<h3 id="VSCode中需要的插件"><a href="#VSCode中需要的插件" class="headerlink" title="VSCode中需要的插件"></a>VSCode中需要的插件</h3><ul>
+<li>C&#x2F;C++</li>
+<li>CMake</li>
+</ul>
+<p>PS:一般会有提示的，下载之后需要重启VSCode</p>
+<p>这样，就配置好C++环境啦~</p>
+<h3 id="了解一下launch-json文件"><a href="#了解一下launch-json文件" class="headerlink" title="了解一下launch.json文件"></a>了解一下launch.json文件</h3><p>这个launch.json启动文件用于在VSCode中配置调试器，运行C++工程的时候，进行调试需要。</p>
+<p>Visual Studio Code生成launch.json启动几乎所有需要的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) 启动&quot;,//名称</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/main&quot;,//Program字段设置为要启动的应用程序dll或.NET核心主机可执行文件的路径</span><br><span class="line">            &quot;args&quot;: [],//参数</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: false,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;为 gdb 启用整齐打印&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ] </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PS：看到这一大片是不是头晕了，不晓得是些啥，一般只需要改一下  &#x3D;&#x3D;”program”&#x3D;&#x3D;和&#x3D;&#x3D;”args”&#x3D;&#x3D;就好啦~<br>用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">若参数有多个，则：</span><br><span class="line">&quot;args&quot;: [&quot;--run_mode&quot;, &quot;classification&quot;]</span><br><span class="line">一个参数对应一个双引号，每个参数间使用逗号（英文）隔开</span><br></pre></td></tr></table></figure>
+
+<h3 id="当VSCode终端显示间隔很大"><a href="#当VSCode终端显示间隔很大" class="headerlink" title="当VSCode终端显示间隔很大"></a>当VSCode终端显示间隔很大</h3><p>打开Ubuntu 18.04，运行代码，突然发现终端显示贼丑，一种没有对齐的感觉，如图<br><img src="https://img-blog.csdnimg.cn/feb77e89312d4a52883fd893920c555a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX3lvdV8=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="VSCode终端显示很乱"><br>通过 VSCode &#x3D;&#x3D;文件&#x3D;&#x3D; - &#x3D;&#x3D;首选项&#x3D;&#x3D; - &#x3D;&#x3D;设置&#x3D;&#x3D;<br>搜索fontFamily<br><img src="https://img-blog.csdnimg.cn/0586c2f10bee4c9cb93288123fd18000.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX3lvdV8=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="设置fontFamily"><br>下滑找到Terminal › Integrated: Font Family，会发现是空的，加上Ubuntu自带的等线字体monospace，结果会整齐很多</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">monospace</span><br></pre></td></tr></table></figure>
+<p>虽然这个字体有点丑，网上使用其他各式各样好看的字体的方法也有很多，如果看不惯的话，可以去搜一搜哦~</p>
+<p>应该大概也许 这篇博客就结束啦，下一篇写啥暂时还没想好，或许是使用过程中遇到的bug吧~</p>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>C/C++</tag>
       </tags>
   </entry>
 </search>
