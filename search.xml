@@ -6,6 +6,8 @@
     <content><![CDATA[<blockquote>
 <p>因学习ROS，需要安装Ubuntu20.04，只有CentOS7服务器资源，尝试在CentOS7上使用Ubuntu…</p>
 </blockquote>
+<span id="more"></span>
+
 <h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ol>
 <li>打开终端，添加 VirtualBox 官方源到 CentOS 7 中</li>
 </ol>
